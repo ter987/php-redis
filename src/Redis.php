@@ -175,10 +175,14 @@ class Redis
             }
             $response = $this->redis->ping();
             if ($response != '+PONG') {
-                throw new \Exception($response, 1);
+                echo 'Can not connect to ' . REDIS_HOST;
+                return ;
+                //throw new \Exception($response, 1);
             }
         } catch (\Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
+            return ;
+            //die($e->getMessage());
         }
     }
     public static function getInstance(){
